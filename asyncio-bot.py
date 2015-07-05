@@ -20,6 +20,7 @@ def filter_data(url):
     try:
         with (yield from sem):
             body = yield from get_data(url, compress=True, connector=connector)
+            # Do stuff with reponse body
     except:
         pass
 
@@ -32,7 +33,7 @@ def execution_time(fn):
         start = datetime.now()
         fn()
         d = datetime.now() - start
-        print('\n', d.total_seconds())
+        print('Total time: ', d.total_seconds())
 
     return time_diff
 
@@ -40,6 +41,10 @@ def execution_time(fn):
 def get_urls():
     return [
         'http://www.google.com',
+        'http://www.facebook.com',
+        'http://www.quora.com',
+        'http://www.twitter.com',
+        # more urls
     ]
 
 
